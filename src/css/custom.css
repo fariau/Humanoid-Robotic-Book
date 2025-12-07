@@ -1,0 +1,73 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the classic template styles here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+}
+
+/* Personalization and language toggle button styles */
+.button-container {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.personalize-button, .urdu-toggle-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.personalize-button {
+  background-color: #4a6fa5;
+}
+
+.urdu-toggle-button {
+  background-color: #2e7d32;
+}
+
+.docusaurus-mermaid-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Custom styles for textbook content */
+.textbook-content {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.chapter-intro {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.quiz-container {
+  background-color: #e3f2fd;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.exercise-container {
+  background-color: #fff3e0;
+  padding: 15px;
+  border-left: 4px solid #ff9800;
+  margin: 20px 0;
+}

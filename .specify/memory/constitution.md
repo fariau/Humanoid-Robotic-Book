@@ -1,55 +1,42 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 0.1.0 → 1.0.0
+- Modified principles: All principles newly defined for Physical AI & Humanoid Robotics textbook
+- Added sections: Core Principles (6), Additional Constraints, Development Workflow, Governance
+- Removed sections: None
+- Templates requiring updates: ✅ updated
+- Follow-up TODOs: None
+-->
+
+# Physical AI & Humanoid Robotics Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Complete Educational Coverage
+Every chapter must comprehensively cover the specified topics in the sequence: Introduction → ROS 2 → Gazebo → NVIDIA Isaac → VLA → Conversational Robotics → Capstone Autonomous Humanoid. Each chapter must include Mermaid diagrams, ROS2/Python code examples, Key Takeaways, Practice Exercises, 5 MCQs quiz, and Further Reading sections. This ensures consistent educational quality across all 13 chapters.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Multilingual Accessibility
+The textbook must support high-quality English and natural human-level Urdu translations. Every chapter must include a "اردو میں پڑھیں / Show in Urdu" button at the top, enabling seamless language switching. Translation quality must reach native speaker level for both languages.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Hardware Personalization
+Each chapter must include a "Personalize to my hardware" button that adapts content based on user's hardware specifications (GPU model, Jetson availability, real robot type). The system must dynamically adjust examples, code snippets, and recommendations based on the user's hardware profile.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Integrated RAG Chatbot
+A sophisticated RAG (Retrieval-Augmented Generation) chatbot must be built into the textbook that can answer questions from the entire book or from selected text only. The chatbot must provide accurate, context-aware responses and cite specific sources within the textbook.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. User Authentication with Hardware Profiling
+The signup/login system must collect essential hardware information including GPU model, Jetson usage (yes/no), and real robot type. This information powers the personalization features and enables targeted content delivery based on the user's actual setup and capabilities.
 
-### [PRINCIPLE_6_NAME]
+### VI. Technical Excellence in Implementation
+The textbook must be built with Docusaurus + Spec-Kit Plus template and deployed on GitHub Pages. All code examples must be verified, executable, and follow best practices for ROS2 and Python development. The system must be scalable, maintainable, and accessible.
 
+## Additional Constraints
+Technology stack: Docusaurus framework, GitHub Pages hosting, Node.js/JavaScript for frontend, Python for backend services including RAG implementation. The system must support responsive design for mobile and desktop. All content must be properly licensed and comply with accessibility standards (WCAG 2.1 AA).
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+All features must follow the red-green-refactor cycle with appropriate testing. Chapter content must be peer-reviewed before publication. Code examples must include unit tests. The RAG system must undergo accuracy validation. User authentication must implement secure practices. Internationalization must be tested with native speakers for both languages.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution governs all development decisions for the Physical AI & Humanoid Robotics textbook. All PRs must verify compliance with these principles. Any deviation requires explicit approval and documentation. Updates to this constitution require team consensus and must maintain the educational mission. The constitution will be reviewed quarterly for continued relevance.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-07 | **Last Amended**: 2025-12-07
