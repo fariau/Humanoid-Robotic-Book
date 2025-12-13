@@ -4,14 +4,15 @@ const sidebars = {
     'ros2/index',
     'gazebo/index',
     'nvidia-isaac/index',
-    'perception/index',
     'vla/index',
     'conversational-robotics/index',
     'hardware-integration/index',
     'motion-planning/index',
+    'perception/index',
+    'learning-adaptation/index',
     'safety-ethics/index',
     'deployment-optimization/index',
-    'learning-adaptation/index'
+    'capstone/index'
   ],
 };
 

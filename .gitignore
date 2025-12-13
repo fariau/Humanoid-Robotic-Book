@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+
+# Environment variables
+.env
+
+# Docusaurus cache
+.docusaurus/
+
+# Claude settings and history
+.claude/
+history/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Temporary folders
+tmp/
+temp/
+
+# Generated bundle stats
+stats.html
