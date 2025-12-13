@@ -19,6 +19,7 @@ const config = {
   organizationName: 'fariau', // Usually your GitHub org/user name.
   projectName: 'Humanoid-Robotic-Book', // Usually your repo name.
   deploymentBranch: 'gh-pages', // The branch to deploy to
+  trailingSlash: false, // Explicitly set to avoid GitHub Pages redirect issues
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
