@@ -52,7 +52,7 @@ const RAGChatbot = ({ selectedTextInitial = null }) => {
 
       const botMsg = {
         id: Date.now() + 1,
-        text: response.answer,
+        text: response.response,
         sender: 'bot',
         sources: response.sources || []
       };
@@ -73,12 +73,16 @@ const RAGChatbot = ({ selectedTextInitial = null }) => {
   // Function to call the RAG API
   const callRAGAPI = async (question, selectedText) => {
     try {
-      const response = await fetch('/api/query', {
+      const response = await fetch('/api/rag/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question, selectedText }),
+        body: JSON.stringify({
+          query: question,
+          context: { selectedText: selectedText || null },
+          language: 'en'
+        }),
       });
 
       if (!response.ok) {
@@ -101,57 +105,80 @@ const RAGChatbot = ({ selectedTextInitial = null }) => {
 
   return (
     <div className="chatbot-container" style={{
-      border: '1px solid #e0e0e0',
+      border: '1px solid #d0d0d0',
       borderRadius: '8px',
       padding: '16px',
       margin: '20px 0',
-      backgroundColor: '#fafafa',
-      fontFamily: 'system-ui, -apple-system, sans-serif'
+      backgroundColor: '#ffffff',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column'
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-        <h3 style={{ margin: 0, color: '#2c3e50' }}>🤖 Textbook Assistant</h3>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '12px',
+        paddingBottom: '8px',
+        borderBottom: '1px solid #eee'
+      }}>
+        <h3 style={{
+          margin: 0,
+          color: '#242526',
+          fontSize: '16px',
+          fontWeight: '600'
+        }}>🤖 Textbook Assistant</h3>
         <button
           onClick={handleAskSelected}
           style={{
-            backgroundColor: '#3498db',
+            backgroundColor: '#3578e5',
             color: 'white',
             border: 'none',
-            padding: '6px 12px',
+            padding: '4px 8px',
             borderRadius: '4px',
             cursor: 'pointer',
-            fontSize: '12px'
+            fontSize: '12px',
+            fontWeight: '500'
           }}
           title="Ask about selected text"
         >
-          Ask about selected text
+          Ask about selected
         </button>
       </div>
 
       {selectedText && (
         <div style={{
-          backgroundColor: '#e3f2fd',
-          border: '1px solid #bbdefb',
-          borderRadius: '4px',
+          backgroundColor: '#f0f8ff',
+          border: '1px solid #d0ebff',
+          borderRadius: '6px',
           padding: '8px',
           marginBottom: '12px',
-          fontSize: '14px'
+          fontSize: '14px',
+          color: '#24292f'
         }}>
-          <strong>Selected text:</strong> "{selectedText.substring(0, 100)}{selectedText.length > 100 ? '...' : ''}"
+          <strong style={{ color: '#0969da' }}>Selected:</strong> "{selectedText.substring(0, 100)}{selectedText.length > 100 ? '...' : ''}"
         </div>
       )}
 
       <div style={{
-        height: '300px',
+        flex: 1,
         overflowY: 'auto',
         marginBottom: '12px',
         padding: '8px',
-        backgroundColor: 'white',
-        border: '1px solid #ddd',
-        borderRadius: '4px'
+        backgroundColor: '#fafbfc',
+        border: '1px solid #e1e4e8',
+        borderRadius: '6px'
       }}>
         {messages.length === 0 ? (
-          <div style={{ color: '#777', fontStyle: 'italic', textAlign: 'center', padding: '20px' }}>
-            Ask me anything about the Physical AI & Humanoid Robotics textbook! You can also select text on the page and click "Ask about selected text".
+          <div style={{
+            color: '#586069',
+            fontStyle: 'italic',
+            textAlign: 'center',
+            padding: '20px',
+            fontSize: '14px'
+          }}>
+            Ask me anything about the Physical AI & Humanoid Robotics textbook! You can also select text on the page and click "Ask about selected".
           </div>
         ) : (
           messages.map((msg) => (
@@ -159,43 +186,43 @@ const RAGChatbot = ({ selectedTextInitial = null }) => {
               key={msg.id}
               style={{
                 marginBottom: '10px',
-                textAlign: msg.sender === 'user' ? 'right' : 'left'
+                display: 'flex',
+                justifyContent: msg.sender === 'user' ? 'flex-end' : 'flex-start'
               }}
             >
               <div
                 style={{
                   display: 'inline-block',
                   padding: '8px 12px',
-                  borderRadius: '18px',
-                  backgroundColor: msg.sender === 'user' ? '#3498db' : '#ecf0f1',
-                  color: msg.sender === 'user' ? 'white' : '#2c3e50',
-                  maxWidth: '80%'
+                  borderRadius: msg.sender === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
+                  backgroundColor: msg.sender === 'user' ? '#3578e5' : '#ffffff',
+                  color: msg.sender === 'user' ? 'white' : '#242526',
+                  maxWidth: '80%',
+                  boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                  border: msg.sender === 'user' ? 'none' : '1px solid #e1e4e8'
                 }}
               >
                 {msg.text}
               </div>
-              {msg.sources && msg.sources.length > 0 && (
-                <div style={{ fontSize: '12px', color: '#777', marginTop: '4px' }}>
-                  Sources: {msg.sources.map((source, idx) => (
-                    <span key={idx} style={{ display: 'block', marginLeft: '10px' }}>
-                      📄 {source.source_file}
-                    </span>
-                  ))}
-                </div>
-              )}
             </div>
           ))
         )}
         {isLoading && (
-          <div style={{ textAlign: 'left', marginBottom: '10px' }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            marginBottom: '10px'
+          }}>
             <div
               style={{
                 display: 'inline-block',
                 padding: '8px 12px',
-                borderRadius: '18px',
-                backgroundColor: '#ecf0f1',
-                color: '#2c3e50',
-                maxWidth: '80%'
+                borderRadius: '18px 18px 18px 4px',
+                backgroundColor: '#ffffff',
+                color: '#242526',
+                maxWidth: '80%',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                border: '1px solid #e1e4e8'
               }}
             >
               Thinking...
@@ -215,11 +242,13 @@ const RAGChatbot = ({ selectedTextInitial = null }) => {
           style={{
             flex: 1,
             padding: '8px 12px',
-            border: '1px solid #ddd',
-            borderRadius: '18px',
+            border: '1px solid #d0d0d0',
+            borderRadius: '6px',
             resize: 'vertical',
             minHeight: '40px',
-            maxHeight: '100px'
+            maxHeight: '100px',
+            fontSize: '14px',
+            outline: 'none'
           }}
           rows={1}
         />
@@ -227,12 +256,14 @@ const RAGChatbot = ({ selectedTextInitial = null }) => {
           type="submit"
           disabled={isLoading || !inputValue.trim()}
           style={{
-            backgroundColor: isLoading || !inputValue.trim() ? '#bdc3c7' : '#2ecc71',
+            backgroundColor: isLoading || !inputValue.trim() ? '#d0d0d0' : '#3578e5',
             color: 'white',
             border: 'none',
             padding: '8px 16px',
-            borderRadius: '18px',
-            cursor: isLoading || !inputValue.trim() ? 'not-allowed' : 'pointer'
+            borderRadius: '6px',
+            cursor: isLoading || !inputValue.trim() ? 'not-allowed' : 'pointer',
+            fontSize: '14px',
+            fontWeight: '500'
           }}
         >
           Send

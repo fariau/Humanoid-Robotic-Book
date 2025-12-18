@@ -10,6 +10,8 @@ dependencies = [
     "cohere>=4.4.3",
     "qdrant-client>=1.7.0",
     "python-dotenv>=1.0.0",
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
 ]
 
 [project.scripts]

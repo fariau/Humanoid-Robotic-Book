@@ -24,6 +24,7 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -53,6 +54,37 @@ const config = {
       }),
     ],
   ],
+
+  plugins: [
+    // Add plugin for custom webpack configuration
+    function () {
+      return {
+        name: 'webpack-dev-server-config',
+        configureWebpack(config, isServer, utils) {
+          if (!isServer) { // Only configure for client builds
+            return {
+              devServer: {
+                proxy: {
+                  '/api/rag': {
+                    target: 'http://localhost:3000',
+                    changeOrigin: true,
+                    secure: false,
+                  },
+                },
+              },
+            };
+          }
+          return {};
+        }
+      };
+    },
+  ],
+
+  themes: [
+    // ... your other themes
+  ],
+
+  staticDirectories: ['static'],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
