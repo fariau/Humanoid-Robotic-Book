@@ -1,0 +1,21 @@
+[project]
+name = "textbook-rag"
+version = "0.1.0"
+description = "Textbook RAG ingestion system"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.2",
+    "cohere>=4.4.3",
+    "qdrant-client>=1.7.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+ingest = "main:main"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+]

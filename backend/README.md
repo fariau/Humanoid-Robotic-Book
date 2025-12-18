@@ -1,61 +1,40 @@
-# RAG System for Physical AI & Humanoid Robotics Textbook
+# Textbook RAG Backend
 
-This backend system implements a Retrieval-Augmented Generation (RAG) system for the Physical AI & Humanoid Robotics textbook using OpenAI and Qdrant.
+This backend system ingests content from the Humanoid Robotics textbook deployed at https://fariau.github.io/Humanoid-Robotic-Book/ and creates a vector database for RAG (Retrieval Augmented Generation) functionality.
+
+## Features
+
+- Fetches all pages from the deployed textbook website
+- Extracts and cleans text content from each page
+- Chunks text into manageable pieces
+- Creates embeddings using Cohere
+- Stores embeddings in Qdrant vector database
 
 ## Setup
 
 1. Install dependencies:
-```bash
-npm install
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-2. Create a `.env` file in the root directory with the following variables:
-```env
-QDRANT_URL=your-qdrant-cloud-url
-QDRANT_API_KEY=your-qdrant-api-key
-OPENAI_API_KEY=your-openai-api-key
-PORT=3001
-```
+2. Set up environment variables in a `.env` file:
+   ```
+   COHERE_API_KEY=your_cohere_api_key
+   QDRANT_URL=your_qdrant_url
+   QDRANT_API_KEY=your_qdrant_api_key
+   ```
 
-## Running the System
-
-### 1. Ingest Content
-First, ingest all textbook content into the vector database:
-
-```bash
-npm run ingest
-# or
-npm run rag:ingest
-```
-
-This will:
-- Read all MDX files from the `docs/` directory
-- Extract text content (excluding frontmatter and code blocks)
-- Create embeddings using OpenAI
-- Store in Qdrant vector database
-
-### 2. Start the API Server
-Start the RAG API server:
-
-```bash
-node backend/server.js
-```
-
-The server will be available at `http://localhost:3001`
-
-### 3. Use the Chatbot
-The chatbot is integrated into the Docusaurus site. When you run the Docusaurus site with `npm start`, it will connect to the backend server.
-
-## API Endpoints
-
-- `GET /api/health` - Health check
-- `POST /api/query` - Query the RAG system
-  - Request body: `{ "question": "your question", "selectedText": "optional selected text" }`
-  - Response: `{ "answer": "answer", "sources": [...] }`
+3. Run the ingestion:
+   ```bash
+   python main.py
+   ```
 
 ## Architecture
 
-- `backend/rag/ingestion.js` - Content ingestion system
-- `backend/rag/query.js` - Query and retrieval system
-- `backend/server.js` - Express API server
-- `src/components/RAGChatbot/index.js` - Frontend chatbot component
+The system follows this pipeline:
+1. Get all URLs from the textbook website
+2. Extract clean text from each URL
+3. Chunk text into smaller pieces
+4. Generate embeddings using Cohere
+5. Create a Qdrant collection named "chatbot_embedding"
+6. Store chunks with metadata in Qdrant
