@@ -57,6 +57,7 @@ const config = {
 
   plugins: [
     // Add plugin for custom webpack configuration
+    // @ts-ignore
     function () {
       return {
         name: 'webpack-dev-server-config',
@@ -119,28 +120,36 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Textbook',
             items: [
               {
-                label: 'Textbook',
+                label: 'Introduction',
                 to: '/docs/intro',
+              },
+              {
+                label: 'Motion Planning',
+                to: '/docs/motion-planning',
+              },
+              {
+                label: 'Learning & Adaptation',
+                to: '/docs/learning-adaptation',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Resources',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'GitHub Repository',
+                href: 'https://github.com/fariau/Humanoid-Robotic-Book',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'ROS2 Documentation',
+                href: 'https://docs.ros.org/en/humble/',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Gazebo Simulation',
+                href: 'https://gazebosim.org/',
               },
             ],
           },
@@ -148,8 +157,16 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'NVIDIA Isaac',
+                href: 'https://developer.nvidia.com/isaac-ros',
+              },
+              {
+                label: 'Safety & Ethics',
+                to: '/docs/safety-ethics',
+              },
+              {
+                label: 'Capstone Project',
+                to: '/docs/capstone',
               },
             ],
           },

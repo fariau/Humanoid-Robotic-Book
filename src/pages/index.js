@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
 function HomepageHeader() {
@@ -47,7 +48,9 @@ function HomepageHeader() {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <div className="container">
+    <Layout
+      title={`Hello from ${siteConfig.title}`}
+      description="Comprehensive textbook on Physical AI and Humanoid Robotics">
       <HomepageHeader />
 
       {/* Additional content sections */}
@@ -85,6 +88,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }
