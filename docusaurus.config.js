@@ -14,10 +14,10 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'fariau', // Usually your GitHub org/user name.
-  projectName: 'Humanoid-Robotic-Book', // Usually your repo name.
-  deploymentBranch: 'gh-pages', // The branch to deploy to
-  trailingSlash: false, // Explicitly set to avoid GitHub Pages redirect issues
+  organizationName: 'fariau', 
+  projectName: 'Humanoid-Robotic-Book', 
+  deploymentBranch: 'gh-pages', 
+  trailingSlash: false, 
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
