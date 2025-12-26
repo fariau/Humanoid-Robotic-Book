@@ -65,12 +65,17 @@ const config = {
               devServer: {
                 proxy: {
                   '/api/rag': {
-                    target: 'http://localhost:3001',
+                    target: 'http://localhost:3025',
                     changeOrigin: true,
                     secure: false,
                   },
                   '/api/auth': {
-                    target: 'http://localhost:3020',
+                    target: 'http://localhost:3025',
+                    changeOrigin: true,
+                    secure: false,
+                  },
+                  '/api/auth': {
+                    target: 'http://localhost:3021',
                     changeOrigin: true,
                     secure: false,
                   },
@@ -118,7 +123,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'http://localhost:3020/auth',
+            href: 'http://localhost:3021/auth',
             label: 'Login / Signup',
             position: 'right',
           },

@@ -1,5 +1,3 @@
-import { neon } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
-
-const sql = neon(process.env.DATABASE_URL!);
-export const db = drizzle(sql);
+// This file is no longer needed since we're using the built-in database option
+// export an empty object or remove the file if not referenced elsewhere
+export {};
