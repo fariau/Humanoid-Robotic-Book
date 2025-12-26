@@ -12,12 +12,12 @@ def run_server():
     print("- COHERE_API_KEY")
     print("- QDRANT_URL")
     print("- QDRANT_API_KEY")
-    print("\nServer will be available at http://localhost:3000")
+    print("\nServer will be available at http://localhost:3001")
 
     uvicorn.run(
         "main_fastapi:app",
         host="0.0.0.0",
-        port=3000,
+        port=3001,
         reload=True,
         log_level="info"
     )

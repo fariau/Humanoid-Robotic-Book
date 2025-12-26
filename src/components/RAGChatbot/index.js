@@ -59,9 +59,23 @@ const RAGChatbot = ({ selectedTextInitial = null }) => {
 
       setMessages(prev => [...prev, botMsg]);
     } catch (error) {
+      console.error('Chatbot error:', error);
+      let errorMessage = 'Sorry, I encountered an error processing your request. Please try again.';
+
+      // Provide more specific error messages based on the error type
+      if (error.message && error.message.includes('fetch')) {
+        errorMessage = 'Unable to connect to the server. Please make sure the backend service is running and properly configured.';
+      } else if (error.message && error.message.includes('404')) {
+        errorMessage = 'The API endpoint was not found. Please check if the backend service is properly configured.';
+      } else if (error.message && error.message.includes('500')) {
+        errorMessage = 'The server encountered an internal error. Please check the backend logs for more details.';
+      } else if (error.message && error.message.includes('NetworkError')) {
+        errorMessage = 'Network error occurred. Please check your connection and try again.';
+      }
+
       const errorMsg = {
         id: Date.now() + 1,
-        text: 'Sorry, I encountered an error processing your request. Please try again.',
+        text: errorMessage,
         sender: 'bot'
       };
       setMessages(prev => [...prev, errorMsg]);

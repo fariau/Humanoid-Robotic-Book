@@ -65,7 +65,12 @@ const config = {
               devServer: {
                 proxy: {
                   '/api/rag': {
-                    target: 'http://localhost:3000',
+                    target: 'http://localhost:3001',
+                    changeOrigin: true,
+                    secure: false,
+                  },
+                  '/api/auth': {
+                    target: 'http://localhost:3020',
                     changeOrigin: true,
                     secure: false,
                   },
@@ -110,6 +115,11 @@ const config = {
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: 'http://localhost:3020/auth',
+            label: 'Login / Signup',
             position: 'right',
           },
         ],

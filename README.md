@@ -123,3 +123,17 @@ backend/server.js     # Express API server
 ## License
 
 This project is licensed under the MIT License.
+
+## Bonus Features
+
+This project includes advanced authentication functionality with custom user profiles:
+
+- **User Authentication**: Secure login and signup system powered by Better-Auth
+- **Custom Profile Fields**: Users provide additional information during signup:
+  - Software background level (Beginner/Intermediate/Expert)
+  - NVIDIA RTX GPU ownership (Yes/No)
+  - Jetson kit or edge device ownership (Yes/No)
+  - Prior robotics/ROS experience (Yes/No)
+- **Integration**: Seamless integration with the Docusaurus textbook via external auth server
+- **Personalized Experience**: Content can be adapted based on user's hardware and experience profile
+- **Secure Implementation**: Uses industry-standard authentication practices with Neon Postgres database
